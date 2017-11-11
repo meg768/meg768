@@ -1,6 +1,6 @@
 {
   "name": "meg768",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/meg768/meg768#readme",
   "dependencies": {
+    "color": "^2.0.1",
     "extend": "^3.0.1",
+    "sleep": "^5.1.1",
     "sprintf-js": "^1.1.1"
   }
 }
