@@ -27,6 +27,10 @@ module.exports = class Animation extends Events {
 
     }
 
+    debug() {
+        if (this.options.debug)
+            console.log.apply(this, arguments);
+    }
 
     render() {
     }

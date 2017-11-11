@@ -4,19 +4,22 @@ var isObject    = require('../yow/is').isObject;
 var isFunction  = require('../yow/is').isFunction;
 var Events      = require('events');
 
-function debug() {
-    console.log.apply(this, arguments);
-}
 
 
 module.exports = class AnimationQueue extends Events {
 
-        constructor() {
+        constructor(options) {
             super();
 
             this.currentAnimation = undefined;
             this.animationQueue   = [];
             this.busy             = false;
+            this.options          = options;
+        }
+
+        debug() {
+            if (this.options.debug)
+                console.log.apply(this, arguments);
         }
 
 		dequeue() {

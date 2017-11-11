@@ -1,19 +1,23 @@
 
 
 
-module.exports = function Pixels(width, height) {
+module.exports = function Pixels(options) {
 
-	var Color = require('color');
+	var Color    = require('color');
+	var isString = require('meg768/yow/is').isString;
+	var isObject = require('meg768/yow/is').isObject;
 
-	var isString = require('../yow/is').isString;
-	var isObject = require('../yow/is').isObject;
+	options = options || {};
+
+	if (options.width == undefined || options.height == undefined)
+		throw new Error('Size of matrix or strip must be specified');
+
 
 	var _this = this;
-	var _length = width * height;
-	var _pixels = new Uint32Array(width * height);
-
-	_this.width  = width;
-	_this.height = height;
+	var _width = options.width;
+	var _height = options.height;
+	var _length = _width * _height;
+	var _pixels = new Uint32Array(_width * _height);
 
 	_this.fill = function(color) {
 		for (var i = 0; i < _length; i++)
@@ -37,19 +41,19 @@ module.exports = function Pixels(width, height) {
 	}
 
 	_this.setPixel = function(x, y, color) {
-		_pixels[y * width + x] = color
+		_pixels[y * _width + x] = color
 	}
 
 	_this.setPixelRGB = function(x, y, red, green, blue) {
- 		_pixels[y * width + x] = (red << 16) | (green << 8) | blue;
+ 		_pixels[y * _width + x] = (red << 16) | (green << 8) | blue;
 	}
 
 	_this.setPixelHSL = function(x, y, h, s, l) {
-		_pixels[y * width + x] = Color.hsl(h, s, l).rgbNumber();
+		_pixels[y * _width + x] = Color.hsl(h, s, l).rgbNumber();
 	}
 
 	_this.getPixel = function(x, y) {
-		return _pixels[y * width + x];
+		return _pixels[y * _width + x];
 	}
 
 	_this.setPixels = function(pixels) {
