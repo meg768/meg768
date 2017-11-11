@@ -1,8 +1,6 @@
 
 
-function debug() {
-	 console.log.apply(this, arguments);
-}
+
 
 module.exports = function NeopixelStrip(options) {
 
@@ -30,6 +28,10 @@ module.exports = function NeopixelStrip(options) {
 	_this.width  = _width;
 	_this.height = _height;
 
+	function debug() {
+		if (_this.options.debug)
+			console.log.apply(this, arguments);
+	}
 
 	function exit() {
 		_strip.render(new Uint32Array(_length));
