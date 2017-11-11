@@ -29,7 +29,7 @@ module.exports = function NeopixelStrip(options) {
 	_this.height = _height;
 
 	function debug() {
-		if (_this.options.debug)
+		if (options.debug)
 			console.log.apply(this, arguments);
 	}
 
