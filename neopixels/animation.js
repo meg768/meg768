@@ -5,6 +5,11 @@ var Pixels  = require('./pixels');
 var Events  = require('events')
 
 
+function debug() {
+    console.log.apply(this, arguments);
+}
+
+
 
 module.exports = class Animation extends Events {
 
@@ -12,6 +17,8 @@ module.exports = class Animation extends Events {
 
     constructor(strip, options) {
         super();
+
+
 
         this.options         = Object.assign({}, {priority:'normal'}, options);
         this.strip           = strip;
@@ -21,13 +28,8 @@ module.exports = class Animation extends Events {
         this.renderTime      = 0;
         this.pixels          = new Pixels({width:strip.width, height:strip.height});
 
-
     }
 
-    debug() {
-        if (this.options.debug)
-            console.log.apply(this, arguments);
-    }
 
     render() {
     }

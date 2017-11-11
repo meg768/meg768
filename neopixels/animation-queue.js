@@ -4,6 +4,9 @@ var isObject    = require('../yow/is').isObject;
 var isFunction  = require('../yow/is').isFunction;
 var Events      = require('events');
 
+function debug() {
+    console.log.apply(this, arguments);
+}
 
 
 module.exports = class AnimationQueue extends Events {
@@ -17,10 +20,7 @@ module.exports = class AnimationQueue extends Events {
             this.options          = options;
         }
 
-        debug() {
-            if (this.options.debug)
-                console.log.apply(this, arguments);
-        }
+
 
 		dequeue() {
 			return new Promise((resolve, reject) => {
