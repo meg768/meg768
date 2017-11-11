@@ -4,17 +4,16 @@
 module.exports = function Pixels(options) {
 
 	var Color    = require('color');
-	var isString = require('meg768/yow/is').isString;
-	var isObject = require('meg768/yow/is').isObject;
+	var isString = require('../yow/is').isString;
+	var isObject = require('../yow/is').isObject;
 
 	options = options || {};
 
 	if (options.width == undefined || options.height == undefined)
 		throw new Error('Size of matrix or strip must be specified');
 
-
-	var _this = this;
-	var _width = options.width;
+	var _this   = this;
+	var _width  = options.width;
 	var _height = options.height;
 	var _length = _width * _height;
 	var _pixels = new Uint32Array(_width * _height);
