@@ -109,8 +109,6 @@ module.exports = function NeopixelStrip(options) {
 
 	}
 
-
-
 	init();
 
 };
